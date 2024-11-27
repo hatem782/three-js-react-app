@@ -9,7 +9,7 @@ function SceneSmallCity() {
 
       <Car />
 
-      <Road />
+      {/* <Road /> */}
     </>
   );
 }

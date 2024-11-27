@@ -1,0 +1,66 @@
+import bpy
+import os
+import time
+
+# Define the source and destination folders
+source_folder = r"C:\Users\Hatem\Desktop\MyProjects\THREE JS\Starting\my-threejs-app\public\models"
+destination_folder = r"C:\Users\Hatem\Desktop\MyProjects\THREE JS\Starting\my-threejs-app\public\models_new"
+
+# Define the material to assign and expected roughness
+material_name_to_assign = "LOWPOLY-COLORS.003"
+expected_roughness = 1.0  # The roughness value that should be applied
+
+# Function to create the same folder structure in the destination
+def ensure_directory_structure(src, dst, file_path):
+    relative_path = os.path.relpath(file_path, src)
+    destination_path = os.path.join(dst, os.path.dirname(relative_path))
+    if not os.path.exists(destination_path):
+        os.makedirs(destination_path)
+    return os.path.join(destination_path, os.path.basename(file_path))
+
+# Function to process FBX files
+def process_fbx_files(source, destination):
+    for root, _, files in os.walk(source):
+        for file in files:
+            if file.endswith(".fbx"):
+                fbx_path = os.path.join(root, file)
+                print(f"Processing: {fbx_path}")
+
+                # Import the FBX file
+                bpy.ops.import_scene.fbx(filepath=fbx_path)
+
+                # Assign the material to all objects
+                material = bpy.data.materials.get(material_name_to_assign)
+                if material is None:
+                    print(f"Error: Material '{material_name_to_assign}' not found!")
+                    continue
+
+                for obj in bpy.context.selected_objects:
+                    if obj.type == 'MESH':
+                        if obj.data.materials:  # If materials exist, replace the first one
+                            obj.data.materials[0] = material
+                        else:  # If no materials are assigned, add the material
+                            obj.data.materials.append(material)
+
+                        # Explicitly set roughness
+                        for mat in obj.data.materials:
+                            if mat and mat.name == material_name_to_assign:
+                                mat.roughness = expected_roughness
+
+                # Determine the export path
+                glb_export_path = ensure_directory_structure(source, destination, fbx_path.replace(".fbx", ".glb"))
+                print(f"Exporting to: {glb_export_path}")
+
+                # Export the GLB file
+                bpy.ops.export_scene.gltf(filepath=glb_export_path, export_format='GLB')
+
+                # Clear the scene for the next file
+                bpy.ops.object.select_all(action='SELECT')
+                bpy.ops.object.delete()
+
+                # Wait for 1 second to avoid crashes
+                time.sleep(1)
+
+# Run the processing function
+process_fbx_files(source_folder, destination_folder)
+print("Batch conversion complete!")
