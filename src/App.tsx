@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import SceneCity from "./Scenes/City/SceneCity";
 import SceneSmallCity from "./Scenes/SmallCity/SceneSmallCity";
+import { Physics } from "@react-three/cannon";
 function App() {
   return (
     <>
@@ -14,8 +15,9 @@ function App() {
           far: 10000, // Far clipping plane
         }}
       >
-        <SceneSmallCity />
-
+        <Physics gravity={[0, -9.8, 0]}>
+          <SceneSmallCity />
+        </Physics>
         <OrbitControls />
       </Canvas>
     </>

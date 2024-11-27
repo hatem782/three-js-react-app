@@ -31,6 +31,7 @@ function Model3D({
   isGround = true, // Special property to handle "ground-like" behavior
   showBoundingBox = false, // Flag to show the bounding box
   withCollider = false, // Flag to determine whether to add a physics collider
+  time = 0,
 }: {
   src: string;
   position?: Position; // Position is an object
@@ -42,12 +43,13 @@ function Model3D({
   isGround?: boolean; // Special case for making the object act like a ground
   showBoundingBox?: boolean; // If true, show the bounding box around the object
   withCollider?: boolean; // If true, add a collider to the object
+  time: number;
 }) {
   // Load the GLTF model
   const gltf = useLoader(GLTFLoader, src);
 
-  // Set up physics with `useBox` if `withCollider` is true
-  const [ref] = useBox(() => ({
+  // Set up physics with `useBox`
+  const [ref, api] = useBox(() => ({
     type: fixed ? "Static" : "Dynamic", // Static for fixed objects, Dynamic for movable
     mass: fixed || isGround ? 0 : mass, // Mass is 0 for static objects or ground
     position: [position.x, position.y, position.z],
@@ -57,9 +59,10 @@ function Model3D({
       degreesToRadians(rotation.z),
     ],
     args: isGround ? [100, 1, 100] : [scale, scale, scale], // Ground uses a large flat shape
-    // Only add the physics body if the withCollider flag is true
     isTrigger: !withCollider, // If `withCollider` is false, it won't have a collider
   }));
+
+  // use the api to move the object
 
   // Show the bounding box if `showBoundingBox` is true
   useEffect(() => {
@@ -74,7 +77,7 @@ function Model3D({
     <primitive
       key={key} // Use a unique key for each model to force re-rendering
       object={gltf.scene.clone()} // Clone the model to avoid conflicts
-      ref={ref} // Attach the model to the physics body if `withCollider` is true
+      ref={ref} // Attach the model to the physics body
       scale={[scale, scale, scale]} // Apply scale directly
     />
   );
