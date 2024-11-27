@@ -1,5 +1,6 @@
 import React from "react";
 import Model3D from "../../Components/Model3D/Model3D";
+import { models } from "../../assets/models";
 
 function Road() {
   return (
@@ -18,28 +19,28 @@ const Line1 = () => {
     <>
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-curve.glb"
+        src={models.Tiles.Roads.tile_road_curve}
         position={{ x: -60, y: 0, z: -45 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: -60, y: 0, z: -15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: -60, y: 0, z: 15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-curve.glb"
+        src={models.Tiles.Roads.tile_road_curve}
         position={{ x: -60, y: 0, z: 45 }}
         rotation={{ x: 0, y: 90, z: 0 }}
         scale={1}
@@ -53,28 +54,28 @@ const Line2 = () => {
     <>
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: -30, y: 0, z: -45 }}
         rotation={{ x: 0, y: 90, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-plain-grass.glb"
+        src={models.Tiles.tile_plain_grass}
         position={{ x: -30, y: 0, z: -15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-plain-grass.glb"
+        src={models.Tiles.tile_plain_grass}
         position={{ x: -30, y: 0, z: 15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: -30, y: 0, z: 45 }}
         rotation={{ x: 0, y: 90, z: 0 }}
         scale={1}
@@ -88,28 +89,28 @@ const Line3 = () => {
     <>
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-intersection.glb"
+        src={models.Tiles.Roads.tile_road_intersection}
         position={{ x: 0, y: 0, z: -45 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: 0, y: 0, z: -15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: 0, y: 0, z: 15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-intersection.glb"
+        src={models.Tiles.Roads.tile_road_intersection}
         position={{ x: 0, y: 0, z: 45 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
@@ -123,28 +124,28 @@ const Line4 = () => {
     <>
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: 30, y: 0, z: -45 }}
         rotation={{ x: 0, y: 90, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-plain-grass.glb"
+        src={models.Tiles.tile_plain_grass}
         position={{ x: 30, y: 0, z: -15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-plain-grass.glb"
+        src={models.Tiles.tile_plain_grass}
         position={{ x: 30, y: 0, z: 15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: 30, y: 0, z: 45 }}
         rotation={{ x: 0, y: 90, z: 0 }}
         scale={1}
@@ -158,28 +159,28 @@ const Line5 = () => {
     <>
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-curve.glb"
+        src={models.Tiles.Roads.tile_road_curve}
         position={{ x: 60, y: 0, z: -45 }}
         rotation={{ x: 0, y: 270, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: 60, y: 0, z: -15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-straight.glb"
+        src={models.Tiles.Roads.tile_road_straight}
         position={{ x: 60, y: 0, z: 15 }}
         rotation={{ x: 0, y: 0, z: 0 }}
         scale={1}
       />
       <Model3D
         key="3"
-        src="/models/tiles/tile-road-curve.glb"
+        src={models.Tiles.Roads.tile_road_curve}
         position={{ x: 60, y: 0, z: 45 }}
         rotation={{ x: 0, y: 180, z: 0 }}
         scale={1}
