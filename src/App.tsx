@@ -2,6 +2,7 @@ import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import SceneCity from "./Scenes/City/SceneCity";
+import SceneSmallCity from "./Scenes/SmallCity/SceneSmallCity";
 function App() {
   return (
     <>
@@ -13,7 +14,7 @@ function App() {
           far: 10000, // Far clipping plane
         }}
       >
-        <SceneCity />
+        <SceneSmallCity />
 
         <OrbitControls />
       </Canvas>
